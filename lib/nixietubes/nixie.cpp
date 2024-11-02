@@ -16,7 +16,7 @@ void setupTubes(){
 void displayDigit(int tube, int digit){
     digit = (digit >= 0 && digit <= 9) ? digit : 0;
 
-    // 1 - 20
+    // 1 - 9
     int val = brightness;
     if(val == 0) val = 1;
 
@@ -81,4 +81,8 @@ void turn_display_off(){
 
 void set_brightness(int brightnessValue){
   brightness = brightnessValue;
+}
+
+int get_brightness(){
+  return brightness;
 }

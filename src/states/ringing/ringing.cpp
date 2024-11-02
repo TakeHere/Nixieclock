@@ -28,11 +28,16 @@ void addition_challenge(){
     turn_display_off();
     delay(500);
 
+    int tempbrightness = get_brightness();
+    set_brightness(1);
+
     displayNumber(numberAddition1);
     delay(3000);
 
     displayNumber(numberAddition2);
     delay(3000);
+
+    set_brightness(tempbrightness);
 }
 
 void blinking_time_loop(){
@@ -65,6 +70,7 @@ bool loop_ringing(){
         if (is_sw_pressed()){
             if(rotencoder_count == numberAddition1 + numberAddition2){
                 stop_ringtone();
+                set_vibration(false);
                 return true;
             }else {
                 addition_challenge();
