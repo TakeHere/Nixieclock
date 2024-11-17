@@ -22,8 +22,8 @@ int digits[10][4] =  {
   {1, 0, 0, 1}
 };
 
-const int sleepStartTime[2] = {8, 30};
-const int sleepEndTime[2] = {15, 0};
+const int sleepStartTime[2] = {9, 30};
+const int sleepEndTime[2] = {17, 0};
 
 const char* ntpServer = "pool.ntp.org";
 

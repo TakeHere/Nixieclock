@@ -33,6 +33,7 @@ void displayDigit(int tube, int digit){
     }
 }
 
+
 void displayNumber(int number){
   // Clamp number for safety
   if (number < 0) {

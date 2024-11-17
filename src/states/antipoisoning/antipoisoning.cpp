@@ -1,33 +1,52 @@
 #include <Arduino.h>
 #include <nixie.h>
 
-int interval = 1000 / 2 / 4;
+static int interval = 1000 / 2 / 4;
 
-bool loop_antipoisoning(){
-    int tempbrightness = get_brightness();
-    set_brightness(1);
+static int currentDigit;                // Chiffre actuel à afficher
+static int direction;                   // Direction (1 pour incrémenter, -1 pour décrémenter)
+static int cycleCount;                  // Compteur de cycles complets (4 au total)
+static unsigned long previousMillis;    // Dernier temps enregistré
 
-    for (int z = 0; z < 4; z++){
-        for (int i = 0; i < 10; i++){
-            displayRepeatingDigit(i);
-
-            delay(interval);
-        }
-
-        for (int i = 9; i >= 0; i--) {
-            displayRepeatingDigit(i);
-
-            delay(interval);
-        }
-    }
-    
-    set_brightness(tempbrightness);
-
-    return true;
+void init_antipoisoning(){
+    cycleCount = 0;
+    direction = 1;
+    currentDigit = 0;
+    previousMillis = 0;
 }
 
-/*
+bool loop_antipoisoning() {
+    unsigned long currentMillis = millis();
 
+    if (currentMillis - previousMillis >= interval) {
+        previousMillis = currentMillis;
+
+        currentDigit += direction;
+
+        if (currentDigit > 9) {
+            currentDigit = 9;
+            direction = -1; // Descending order direction
+        } else if (currentDigit < 0) {
+            currentDigit = 0;
+            direction = 1; // Ascending order direction
+            cycleCount++;
+        }
+    }
+
+    displayRepeatingDigit(currentDigit);
+
+    if (cycleCount >= 4) {
+        return true;
+    }
+
+    return false;
+}
+
+
+
+//Another antipoisoning pattern
+
+/*
 #include <Arduino.h>
 #include <nixie.h>
 

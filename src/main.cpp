@@ -85,6 +85,7 @@ void statemachine_loop(){
     case DisplayingTime:
       // Transition into AntiPoisoning state
       if((millis() - lasttime_antipoisoning) > antipoisoning_delay){
+        init_antipoisoning();
         lasttime_antipoisoning = millis();
         clock_state = AntiPoisoning;
         break;
