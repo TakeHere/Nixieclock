@@ -28,4 +28,8 @@ const int sleepEndTime[2] = {17, 0};
 const char* ntpServer = "pool.ntp.org";
 
 // Adding 10s, time for the antipoisoning to end
-int antipoisoning_delay = 300000 + 10000;
+int antipoisoning_delay = 300*1000 + 10*1000;
+
+// Ringing
+const int timeUntilMaxVibrations = 30 * 1000;
+const int ringingInterval = 600;

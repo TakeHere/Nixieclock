@@ -1,6 +1,6 @@
 void setup_externalbox();
 
-void set_vibration(bool vibrate);
+void set_vibration(int vibrate);
 
 void init_ringtone();
 void loop_ringtone();

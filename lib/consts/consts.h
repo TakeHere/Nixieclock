@@ -20,4 +20,9 @@ extern const int sleepEndTime[2];
 // in ms
 extern int antipoisoning_delay;
 
+
+// Ringing
+extern const int timeUntilMaxVibrations;
+extern const int ringingInterval;
+
 #endif // CONSTS_H

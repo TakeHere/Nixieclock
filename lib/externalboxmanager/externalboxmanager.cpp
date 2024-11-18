@@ -75,8 +75,13 @@ void setup_externalbox(){
     pinMode(BUZZER_PIN, OUTPUT);
 }
 
-void set_vibration(bool vibrate){
-    digitalWrite(VIBRATION_PIN, vibrate);
+int lastVibration = -1;
+
+void set_vibration(int vibrate){
+    if(vibrate != lastVibration){
+        analogWrite(VIBRATION_PIN, vibrate); 
+        lastVibration = vibrate;
+    }
 }
 
 void init_ringtone(){

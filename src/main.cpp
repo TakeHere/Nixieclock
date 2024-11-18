@@ -63,7 +63,7 @@ void loop() {
 
   ArduinoOTA.handle();
 
-  //sleepcheck_loop();
+  sleepcheck_loop();
 }
 
 void statemachine_loop(){
